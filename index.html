@@ -1,428 +1,1160 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brew Haven | Premium Café Experience</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Kartik Plumbing Services | 24/7 Plumbing & Home Repairs in Dombivli & Kalyan</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        cream: '#F5F1E8',
-                        beige: '#E8DCCB',
-                        coffee: '#6F4E37',
-                        darkbrown: '#2E1F1A',
-                        gold: '#C8A96A'
-                    },
-                    fontFamily: {
-                        serif: ['Cormorant Garamond', 'serif'],
-                        sans: ['Inter', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            color: #2E1F1A;
-            overflow-x: hidden;
+
+        :root {
+            --primary: #1E3A5F;
+            --secondary: #2CA6A4;
+            --accent: #FF7A18;
+            --background: #F5F7FA;
+            --text: #222222;
+            --white: #FFFFFF;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        html {
             scroll-behavior: smooth;
         }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Cormorant Garamond', serif;
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
             font-weight: 600;
-        }
-        
-        .hero-bg {
-            background: linear-gradient(rgba(47, 31, 26, 0.85), rgba(47, 31, 26, 0.7)), url('https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        
-        .menu-item {
+            font-size: 0.95rem;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        
-        .menu-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+
+        .nav-cta:hover {
+            background: #e86a0a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 122, 24, 0.4);
         }
-        
-        .swiper-slide {
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
         }
-        
-        .swiper-slide-active {
-            opacity: 1;
-        }
-        
-        .cart-preview {
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        }
-        
-        .cart-preview.open {
-            transform: translateX(0);
-        }
-        
-        .scroll-indicator {
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
-        }
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .parallax-bg {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        
-        .btn-ripple {
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, #2d4a6f 100%);
             position: relative;
             overflow: hidden;
         }
-        
-        .btn-ripple:after {
+
+        .hero::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 5px;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.5);
-            opacity: 0;
-            border-radius: 100%;
-            transform: scale(1, 1) translate(-50%);
-            transform-origin: 50% 50%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
-        
-        .btn-ripple:focus:not(:active)::after {
-            animation: ripple 1s ease-out;
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
         }
-        
-        @keyframes ripple {
-            0% {
-                transform: scale(0, 0);
-                opacity: 0.5;
-            }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.15;
+        }
+
+        .hero-text h1 span {
+            color: var(--accent);
+        }
+
+        .hero-text p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #e86a0a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 122, 24, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--white);
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 18px;
+            border-radius: 50px;
+            color: var(--white);
+            font-size: 0.9rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .badge.rating {
+            background: rgba(255, 193, 7, 0.2);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-image-container {
+            position: relative;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-image {
+            width: 100%;
+            border-radius: 20px;
+            display: block;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--white);
+            padding: 15px 20px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-hover);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .floating-card.card-1 {
+            top: 20px;
+            left: -30px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-card.card-2 {
+            bottom: 40px;
+            right: -20px;
+            animation: float 3s ease-in-out infinite 1s;
+        }
+
+        @keyframes float {
+
+            0%,
             100% {
-                transform: scale(20, 20);
-                opacity: 0;
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
             }
         }
-        
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, #E8DCCB, transparent);
+
+        .floating-card-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
         }
-        
+
+        .floating-card-text {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .floating-card-text span {
+            display: block;
+            font-size: 0.8rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(44, 166, 164, 0.1), rgba(30, 58, 95, 0.1));
+            color: var(--secondary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-img-main {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .about-stats {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 25px 35px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .about-stats-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .about-stats-text {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .about-feature svg {
+            color: var(--secondary);
+            flex-shrink: 0;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: var(--background);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 35px 25px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(44, 166, 164, 0.2);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(44, 166, 164, 0.1), rgba(30, 58, 95, 0.1));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--secondary);
+            font-size: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Why Choose Us */
+        .why-choose {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, #2d4a6f 100%);
+            position: relative;
+        }
+
+        .why-choose .section-header h2 {
+            color: var(--white);
+        }
+
+        .why-choose .section-header p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .why-choose .section-label {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--white);
+            font-size: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            border-radius: 30px;
+            padding: 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .cta-box h2 {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .cta-box p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .cta-buttons .btn-primary {
+            background: var(--white);
+            color: var(--primary);
+            padding: 18px 40px;
+            font-size: 1.2rem;
+        }
+
+        .cta-buttons .btn-primary:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        /* Service Area */
+        .service-area {
+            padding: 80px 0;
+            background: var(--background);
+        }
+
+        .area-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .area-text h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .area-text p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .area-locations {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        .location-tag {
+            background: var(--white);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 500;
+            color: var(--primary);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .location-tag svg {
+            color: var(--secondary);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .footer-logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .footer-contact-item svg {
+            color: var(--secondary);
+        }
+
+        .footer-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Sticky Mobile CTA */
+        .mobile-sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            padding: 15px 20px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 999;
+        }
+
+        .mobile-sticky-cta a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--accent);
+            color: var(--white);
+            padding: 15px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 28px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 998;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
-            .hero-bg {
-                background-attachment: scroll;
+            .nav-links {
+                display: none;
             }
-            .parallax-bg {
-                background-attachment: scroll;
+
+            .nav-cta {
+                display: none;
             }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .trust-badges {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .about-stats {
+                right: 20px;
+                bottom: -20px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-box {
+                padding: 40px 25px;
+            }
+
+            .cta-box h2 {
+                font-size: 1.8rem;
+            }
+
+            .area-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .area-locations {
+                justify-content: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand {
+                max-width: none;
+            }
+
+            .footer-logo {
+                justify-content: center;
+            }
+
+            .footer-contact-item {
+                justify-content: center;
+            }
+
+            .mobile-sticky-cta {
+                display: block;
+            }
+
+            .whatsapp-btn {
+                bottom: 100px;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 14px 24px;
+                font-size: 1rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .badge {
+                font-size: 0.8rem;
+                padding: 8px 14px;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 75px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 15px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
         }
     </style>
 </head>
-<body class="bg-cream">
+
+<body>
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 py-4 transition-all duration-300 bg-cream/90 backdrop-blur-sm">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="#" class="text-2xl font-serif text-darkbrown font-bold">Brew Haven</a>
-            <div class="hidden md:flex space-x-8">
-                <a href="#home" class="text-darkbrown hover:text-coffee transition">Home</a>
-                <a href="#menu" class="text-darkbrown hover:text-coffee transition">Menu</a>
-                <a href="#story" class="text-darkbrown hover:text-coffee transition">Our Story</a>
-                <a href="#visit" class="text-darkbrown hover:text-coffee transition">Visit</a>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2v6m0 0l3-3m-3 3L9 5M5 12h6m0 0l-3-3m3 3l-3 3m14-3h-6m0 0l3-3m-3 3l3 3m-7 7v-6m0 0l3 3m-3-3l-3 3" />
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    Kartik Plumbing
+                    <span>Services</span>
+                </div>
             </div>
-            <div class="flex items-center space-x-4">
-                <button id="cartBtn" class="relative">
-                    <i class="fas fa-shopping-bag text-darkbrown text-xl"></i>
-                    <span id="cartCount" class="absolute -top-2 -right-2 bg-coffee text-cream text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
-                </button>
-                <button class="md:hidden text-darkbrown text-xl" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="md:hidden absolute top-full left-0 w-full bg-cream shadow-lg hidden">
-            <div class="flex flex-col p-6 space-y-4">
-                <a href="#home" class="text-darkbrown py-2">Home</a>
-                <a href="#menu" class="text-darkbrown py-2">Menu</a>
-                <a href="#story" class="text-darkbrown py-2">Our Story</a>
-                <a href="#visit" class="text-darkbrown py-2">Visit</a>
-                <button class="bg-coffee text-cream py-3 px-6 rounded-full mt-4">Order Now</button>
-            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="tel:8356054953" class="nav-cta">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path
+                        d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                </svg>
+                Call Now
+            </a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
         </div>
     </nav>
 
-    <!-- Cart Preview -->
-    <div id="cartPreview" class="cart-preview fixed top-0 right-0 h-full w-full md:w-96 bg-cream shadow-xl z-50 p-6 overflow-y-auto">
-        <div class="flex justify-between items-center mb-6">
-            <h3 class="text-xl font-serif">Your Order</h3>
-            <button id="closeCart" class="text-darkbrown text-2xl">&times;</button>
-        </div>
-        <div id="cartItems" class="mb-8">
-            <!-- Cart items will be added here -->
-            <p class="text-darkbrown/60 text-center py-8">Your cart is empty</p>
-        </div>
-        <div class="border-t border-beige pt-4">
-            <div class="flex justify-between mb-6">
-                <span class="font-medium">Total</span>
-                <span id="cartTotal" class="font-bold">$0.00</span>
-            </div>
-            <button class="w-full bg-coffee text-cream py-3 rounded-full font-medium">Checkout</button>
-        </div>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home" onclick="toggleMenu()">Home</a>
+        <a href="#about" onclick="toggleMenu()">About</a>
+        <a href="#services" onclick="toggleMenu()">Services</a>
+        <a href="#why-us" onclick="toggleMenu()">Why Us</a>
+        <a href="#contact" onclick="toggleMenu()">Contact</a>
+        <a href="tel:8356054953" style="color: var(--accent); font-weight: 600;">📞 Call Now - 83560 54953</a>
     </div>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-bg min-h-screen flex items-center pt-16">
-        <div class="container mx-auto px-6">
-            <div class="max-w-2xl fade-in">
-                <h1 class="text-5xl md:text-7xl text-cream font-serif mb-6">More Than Coffee — <span class="text-gold">It's an Experience</span></h1>
-                <p class="text-xl text-cream/90 mb-10">Step into a space where flavor meets comfort and every moment feels special.</p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <button class="btn-ripple bg-gold text-darkbrown py-4 px-8 rounded-full text-lg font-medium hover:bg-coffee hover:text-cream transition duration-300">Order Now</button>
-                    <button class="btn-ripple border-2 border-cream text-cream py-4 px-8 rounded-full text-lg font-medium hover:bg-cream hover:text-darkbrown transition duration-300">View Menu</button>
-                </div>
-            </div>
-            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
-                <a href="#menu" class="text-cream">
-                    <i class="fas fa-chevron-down text-2xl"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Menu -->
-    <section id="menu" class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl md:text-5xl font-serif text-darkbrown mb-4">Curated Selection</h2>
-                <p class="text-darkbrown/70 max-w-2xl mx-auto">Each item is crafted with premium ingredients and attention to detail.</p>
-            </div>
-            
-            <!-- Menu Tabs -->
-            <div class="flex justify-center mb-12 overflow-x-auto">
-                <div class="flex space-x-2 md:space-x-6">
-                    <button class="menu-tab active px-6 py-3 rounded-full bg-coffee text-cream font-medium" data-category="coffee">Coffee</button>
-                    <button class="menu-tab px-6 py-3 rounded-full bg-beige text-darkbrown font-medium" data-category="snacks">Snacks</button>
-                    <button class="menu-tab px-6 py-3 rounded-full bg-beige text-darkbrown font-medium" data-category="desserts">Desserts</button>
-                    <button class="menu-tab px-6 py-3 rounded-full bg-beige text-darkbrown font-medium" data-category="specials">Specials</button>
-                </div>
-            </div>
-            
-            <!-- Menu Items Grid -->
-            <div id="menuItems" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Coffee items -->
-                <div class="menu-item bg-cream rounded-2xl overflow-hidden shadow-lg" data-category="coffee">
-                    <div class="h-48 bg-gradient-to-r from-coffee to-darkbrown relative">
-                        <span class="absolute top-4 left-4 bg-gold text-darkbrown px-3 py-1 rounded-full text-sm font-medium">Most Loved</span>
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Fast & Reliable <span>Plumbing Services</span> — Available 24/7</h1>
+                    <p>One call solves it all — plumbing, electrical, leakage, and home repair services in Dombivli &
+                        Kalyan. Professional, affordable, and always on time.</p>
+                    <div class="hero-buttons">
+                        <a href="tel:8356054953" class="btn-primary">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                            </svg>
+                            Call Now
+                        </a>
+                        <a href="https://wa.me/918356054953" class="btn-secondary">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                            </svg>
+                            Get Immediate Help
+                        </a>
                     </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-3">
-                            <h3 class="text-2xl font-serif">Haven Signature Blend</h3>
-                            <span class="text-xl font-bold text-coffee">$5.50</span>
+                    <div class="trust-badges">
+                        <div class="badge rating">
+                            <svg width="18" height="18" fill="#FFC107" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            4.9 Rating
                         </div>
-                        <p class="text-darkbrown/70 mb-6">Our signature single-origin espresso with notes of chocolate and caramel.</p>
-                        <button class="add-to-cart w-full bg-beige text-darkbrown py-3 rounded-full font-medium hover:bg-coffee hover:text-cream transition" data-name="Haven Signature Blend" data-price="5.50">Add to Cart</button>
-                    </div>
-                </div>
-                
-                <div class="menu-item bg-cream rounded-2xl overflow-hidden shadow-lg" data-category="coffee">
-                    <div class="h-48 bg-gradient-to-r from-beige to-gold"></div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-3">
-                            <h3 class="text-2xl font-serif">Velvet Cappuccino</h3>
-                            <span class="text-xl font-bold text-coffee">$6.00</span>
+                        <div class="badge">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12,6 12,12 16,14" />
+                            </svg>
+                            24/7 Emergency Service
                         </div>
-                        <p class="text-darkbrown/70 mb-6">Silky smooth cappuccino with perfectly textured milk foam.</p>
-                        <button class="add-to-cart w-full bg-beige text-darkbrown py-3 rounded-full font-medium hover:bg-coffee hover:text-cream transition" data-name="Velvet Cappuccino" data-price="6.00">Add to Cart</button>
-                    </div>
-                </div>
-                
-                <!-- Snacks items -->
-                <div class="menu-item bg-cream rounded-2xl overflow-hidden shadow-lg hidden" data-category="snacks">
-                    <div class="h-48 bg-gradient-to-r from-darkbrown to-gold"></div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-3">
-                            <h3 class="text-2xl font-serif">Avocado Toast Deluxe</h3>
-                            <span class="text-xl font-bold text-coffee">$12.50</span>
+                        <div class="badge">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            Dombivli & Kalyan
                         </div>
-                        <p class="text-darkbrown/70 mb-6">Sourdough toast with smashed avocado, cherry tomatoes, and microgreens.</p>
-                        <button class="add-to-cart w-full bg-beige text-darkbrown py-3 rounded-full font-medium hover:bg-coffee hover:text-cream transition" data-name="Avocado Toast Deluxe" data-price="12.50">Add to Cart</button>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Signature Items -->
-    <section class="py-20 bg-beige">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl md:text-5xl font-serif text-darkbrown mb-4">Signature Creations</h2>
-                <p class="text-darkbrown/70 max-w-2xl mx-auto">Our most beloved items, crafted to perfection.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-cream rounded-2xl overflow-hidden shadow-lg fade-in">
-                    <div class="h-64 bg-gradient-to-br from-coffee to-gold"></div>
-                    <div class="p-8">
-                        <div class="flex items-center mb-4">
-                            <div class="text-gold mr-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+                <div class="hero-visual">
+                    <div class="hero-image-container">
+                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&h=600&fit=crop"
+                            alt="Professional Plumber at Work" class="hero-image">
+                        <div class="floating-card card-1">
+                            <div class="floating-card-icon">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                                    <polyline points="22,4 12,14.01 9,11.01" />
+                                </svg>
                             </div>
-                            <span class="text-darkbrown/60">(248 reviews)</span>
-                        </div>
-                        <h3 class="text-2xl font-serif mb-3">Lavender Honey Latte</h3>
-                        <p class="text-darkbrown/70 mb-6">A calming blend of espresso, lavender syrup, and local honey.</p>
-                        <button class="add-to-cart w-full bg-coffee text-cream py-3 rounded-full font-medium hover:bg-darkbrown transition" data-name="Lavender Honey Latte" data-price="7.50">Add to Cart</button>
-                    </div>
-                </div>
-                
-                <div class="bg-cream rounded-2xl overflow-hidden shadow-lg fade-in">
-                    <div class="h-64 bg-gradient-to-br from-darkbrown to-coffee"></div>
-                    <div class="p-8">
-                        <div class="flex items-center mb-4">
-                            <div class="text-gold mr-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <span class="text-darkbrown/60">(196 reviews)</span>
-                        </div>
-                        <h3 class="text-2xl font-serif mb-3">Matcha Croissant</h3>
-                        <p class="text-darkbrown/70 mb-6">Flaky croissant filled with premium matcha white chocolate.</p>
-                        <button class="add-to-cart w-full bg-coffee text-cream py-3 rounded-full font-medium hover:bg-darkbrown transition" data-name="Matcha Croissant" data-price="8.00">Add to Cart</button>
-                    </div>
-                </div>
-                
-                <div class="bg-cream rounded-2xl overflow-hidden shadow-lg fade-in">
-                    <div class="h-64 bg-gradient-to-br from-gold to-beige"></div>
-                    <div class="p-8">
-                        <div class="flex items-center mb-4">
-                            <div class="text-gold mr-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="text-darkbrown/60">(312 reviews)</span>
-                        </div>
-                        <h3 class="text-2xl font-serif mb-3">Salted Caramel Affogato</h3>
-                        <p class="text-darkbrown/70 mb-6">Vanilla gelato drowned in espresso and house-made caramel.</p>
-                        <button class="add-to-cart w-full bg-coffee text-cream py-3 rounded-full font-medium hover:bg-darkbrown transition" data-name="Salted Caramel Affogato" data-price="9.00">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Story Section -->
-    <section id="story" class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="fade-in">
-                    <h2 class="text-4xl md:text-5xl font-serif text-darkbrown mb-6">Where Every Sip Tells a Story</h2>
-                    <div class="space-y-6 text-darkbrown/80">
-                        <p>Founded in 2018, Brew Haven began as a simple idea: create a sanctuary where coffee is more than a beverage—it's a ritual.</p>
-                        <p>We source directly from sustainable farms, roast in small batches, and craft each drink with precision and passion.</p>
-                        <p>Our space is designed to be your escape from daily chaos—a place to reconnect, relax, and recharge.</p>
-                    </div>
-                    <button class="btn-ripple mt-8 border-2 border-coffee text-coffee py-3 px-8 rounded-full font-medium hover:bg-coffee hover:text-cream transition duration-300">Our Journey</button>
-                </div>
-                <div class="fade-in">
-                    <div class="h-96 rounded-2xl overflow-hidden shadow-xl parallax-bg" style="background-image: url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Proof -->
-    <section class="py-20 bg-darkbrown text-cream">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl md:text-5xl font-serif mb-4">Loved by Our Community</h2>
-                <p class="text-cream/70 max-w-2xl mx-auto">What our guests say about their experience at Brew Haven.</p>
-            </div>
-            
-            <div class="max-w-4xl mx-auto">
-                <div class="swiper-slide p-8 bg-darkbrown/50 rounded-2xl">
-                    <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-r from-gold to-coffee mr-4"></div>
-                        <div>
-                            <h4 class="text-xl font-serif">Alex Morgan</h4>
-                            <div class="text-gold">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+                            <div class="floating-card-text">
+                                100% Satisfied
+                                <span>Customers</span>
                             </div>
                         </div>
-                    </div>
-                    <p class="italic text-lg">"The ambiance is everything. Perfect place to work or catch up with friends. Their lavender latte is my absolute favorite."</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Live Engagement -->
-    <section class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="bg-gradient-to-r from-coffee to-darkbrown rounded-2xl p-8 md:p-12 text-cream">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                    <div class="md:col-span-2">
-                        <h2 class="text-3xl md:text-4xl font-serif mb-4">Today's Special</h2>
-                        <p class="text-cream/90 mb-6">Try our limited-time <span class="font-bold">Pumpkin Spice Cold Brew</span> with cinnamon foam. Available only this week!</p>
-                        <button class="btn-ripple bg-gold text-darkbrown py-3 px-8 rounded-full font-medium hover:bg-cream transition">Order Today's Special</button>
-                    </div>
-                    <div class="text-center">
-                        <div class="inline-block p-6 bg-cream/20 rounded-2xl">
-                            <div class="text-5xl font-serif mb-2" id="dailyCount">47</div>
-                            <p class="text-cream/80">served today</p>
+                        <div class="floating-card card-2">
+                            <div class="floating-card-icon">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12,6 12,12 16,14" />
+                                </svg>
+                            </div>
+                            <div class="floating-card-text">
+                                Quick Response
+                                <span>Within 30 mins</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -430,309 +1162,529 @@
         </div>
     </section>
 
-    <!-- Location & Visit -->
-    <section id="visit" class="py-20 bg-beige">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl md:text-5xl font-serif text-darkbrown mb-4">Visit Our Sanctuary</h2>
-                <p class="text-darkbrown/70 max-w-2xl mx-auto">Find us in the heart of the city, waiting to welcome you.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div class="fade-in">
-                    <div class="h-96 bg-gradient-to-br from-darkbrown to-coffee rounded-2xl overflow-hidden shadow-xl">
-                        <!-- Map placeholder -->
-                        <div class="w-full h-full flex items-center justify-center">
-                            <div class="text-center text-cream">
-                                <i class="fas fa-map-marker-alt text-5xl mb-4"></i>
-                                <p class="text-xl">123 Coffee Street<br>Cityville, CV 12345</p>
-                            </div>
-                        </div>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=400&fit=crop"
+                        alt="Our Team" class="about-img-main">
+                    <div class="about-stats">
+                        <div class="about-stats-number">30+</div>
+                        <div class="about-stats-text">Years Experience</div>
                     </div>
                 </div>
-                
-                <div class="fade-in">
-                    <div class="bg-cream rounded-2xl p-8 shadow-lg">
-                        <h3 class="text-3xl font-serif text-darkbrown mb-8">Hours & Details</h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex justify-between pb-4 border-b border-beige">
-                                <span class="font-medium">Monday - Friday</span>
-                                <span>7:00 AM - 9:00 PM</span>
-                            </div>
-                            <div class="flex justify-between pb-4 border-b border-beige">
-                                <span class="font-medium">Saturday - Sunday</span>
-                                <span>8:00 AM - 10:00 PM</span>
-                            </div>
-                            
-                            <div class="pt-6">
-                                <p class="text-darkbrown/70 mb-6">We recommend reserving a table on weekends as we tend to get busy.</p>
-                                
-                                <div class="flex flex-col sm:flex-row gap-4">
-                                    <button class="btn-ripple flex-1 bg-coffee text-cream py-4 rounded-full font-medium hover:bg-darkbrown transition">
-                                        <i class="fas fa-directions mr-2"></i> Get Directions
-                                    </button>
-                                    <button class="btn-ripple flex-1 border-2 border-coffee text-coffee py-4 rounded-full font-medium hover:bg-coffee hover:text-cream transition">
-                                        <i class="fas fa-calendar-check mr-2"></i> Reserve a Table
-                                    </button>
-                                </div>
-                            </div>
+                <div class="about-text">
+                    <span class="section-label">About Us</span>
+                    <h3>Your Trusted Local Home Service Expert</h3>
+                    <p>Kartik Plumbing Services provides fast, reliable, and professional home repair solutions across
+                        Dombivli and Kalyan. With years of hands-on experience and a strong reputation, we handle
+                        everything from small repairs to major installations.</p>
+                    <p>We understand emergencies don't wait — that's why we are available 24/7 to solve your problems
+                        quickly and efficiently. Our skilled technicians are trained to deliver quality work at
+                        affordable prices.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                                <polyline points="22,4 12,14.01 9,11.01" />
+                            </svg>
+                            Licensed & Insured
+                        </div>
+                        <div class="about-feature">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                                <polyline points="22,4 12,14.01 9,11.01" />
+                            </svg>
+                            Trained Experts
+                        </div>
+                        <div class="about-feature">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                                <polyline points="22,4 12,14.01 9,11.01" />
+                            </svg>
+                            Fair Pricing
+                        </div>
+                        <div class="about-feature">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                                <polyline points="22,4 12,14.01 9,11.01" />
+                            </svg>
+                            Quality Guaranteed
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Our Services</span>
+                <h2>Complete Home Repair Solutions</h2>
+                <p>From plumbing emergencies to home renovations, we've got you covered with professional services.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M12 2v6m0 0l3-3m-3 3L9 5M5 12h6m0 0l-3-3m3 3l-3 3m14-3h-6m0 0l3-3m-3 3l3 3m-7 7v-6" />
+                        </svg>
+                    </div>
+                    <h3>Plumbing Services</h3>
+                    <p>Complete plumbing solutions for residential and commercial properties.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10M12 2v10l5.5 3" />
+                        </svg>
+                    </div>
+                    <h3>Leak Detection</h3>
+                    <p>Advanced leak detection to prevent water damage and save costs.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
+                        </svg>
+                    </div>
+                    <h3>Pipe Repair</h3>
+                    <p>Expert pipe repair and replacement for all types of plumbing systems.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M12 2v6m0 8v6m-6-6h6m2 0h6" />
+                        </svg>
+                    </div>
+                    <h3>Tap Installation</h3>
+                    <p>Professional tap installation and repair services for kitchens and bathrooms.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                            <line x1="16" y1="2" x2="16" y2="6" />
+                            <line x1="8" y1="2" x2="8" y2="6" />
+                        </svg>
+                    </div>
+                    <h3>Toilet Repair</h3>
+                    <p>Complete toilet installation, repair, and maintenance services.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />
+                        </svg>
+                    </div>
+                    <h3>Shower Installation</h3>
+                    <p>Modern shower installation with premium fixtures and fittings.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3>Water Heater</h3>
+                    <p>Water heater installation, repair, and maintenance services.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                    </div>
+                    <h3>Electrical Work</h3>
+                    <p>Professional electrical installation and repair services.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M12 19l7-7 3 3-7 7-3-3z" />
+                            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+                            <path d="M2 2l7.586 7.586" />
+                            <circle cx="11" cy="11" r="2" />
+                        </svg>
+                    </div>
+                    <h3>Painting Work</h3>
+                    <p>Interior and exterior painting with premium quality paints.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <line x1="3" y1="9" x2="21" y2="9" />
+                            <line x1="9" y1="21" x2="9" y2="9" />
+                        </svg>
+                    </div>
+                    <h3>Civil Work</h3>
+                    <p>Construction and civil repair work for homes and buildings.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />
+                        </svg>
+                    </div>
+                    <h3>Leakage Work</h3>
+                    <p>Waterproofing and leakage repair for roofs, walls, and bathrooms.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                            <polyline points="9,22 9,12 15,12 15,22" />
+                        </svg>
+                    </div>
+                    <h3>Home Repairs</h3>
+                    <p>Complete home maintenance and repair solutions under one roof.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose" id="why-us">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Why Choose Us</span>
+                <h2>Why Customers Trust Us</h2>
+                <p>We deliver quality service with reliability and transparency every time.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12,6 12,12 16,14" />
+                        </svg>
+                    </div>
+                    <h3>24/7 Emergency Availability</h3>
+                    <p>We're always available when you need us most. Day or night, weekday or weekend.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                    </div>
+                    <h3>Fast Response Time</h3>
+                    <p>Quick arrival at your doorstep. We understand that time is critical in emergencies.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 00-3-3.87" />
+                            <path d="M16 3.13a4 4 0 010 7.75" />
+                        </svg>
+                    </div>
+                    <h3>Skilled & Experienced Team</h3>
+                    <p>Our technicians are trained professionals with years of hands-on experience.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <line x1="12" y1="1" x2="12" y2="23" />
+                            <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+                        </svg>
+                    </div>
+                    <h3>Affordable & Transparent Pricing</h3>
+                    <p>No hidden charges. Fair and upfront pricing for all our services.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                            <polyline points="9,22 9,12 15,12 15,22" />
+                        </svg>
+                    </div>
+                    <h3>One-Stop Solution</h3>
+                    <p>Plumbing, electrical, painting, civil work — all under one roof for your convenience.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                    </div>
+                    <h3>4.9 Star Rating</h3>
+                    <p>Trusted by hundreds of local customers with consistently high satisfaction ratings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Need Immediate Help?</h2>
+                <p>Don't wait for small problems to turn into big ones. Call now and get fast, reliable service at your
+                    doorstep.</p>
+                <div class="cta-buttons">
+                    <a href="tel:8356054953" class="btn-primary">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                        </svg>
+                        Call 83560 54953
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Area -->
+    <section class="service-area">
+        <div class="container">
+            <div class="area-content">
+                <div class="area-text">
+                    <h2>Serving Your Area</h2>
+                    <p>We provide our professional services across Dombivli, Kalyan, and nearby areas.</p>
+                </div>
+                <div class="area-locations">
+                    <div class="location-tag">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        Dombivli West
+                    </div>
+                    <div class="location-tag">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        Kalyan
+                    </div>
+                    <div class="location-tag">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        Reti Bunder
+                    </div>
+                    <div class="location-tag">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        Mothagaon
+                    </div>
+                    <div class="location-tag">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        Kopar Road
+                    </div>
+                    <div class="location-tag">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        Dombivli East
+                    </div>
+                    <div class="location-tag">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        Thakurli
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
 
     <!-- Footer -->
-    <footer class="py-12 bg-darkbrown text-cream">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-2xl font-serif mb-4">Brew Haven</h3>
-                    <p class="text-cream/70">Your perfect escape from daily chaos.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2v6m0 0l3-3m-3 3L9 5M5 12h6m0 0l-3-3m3 3l-3 3m14-3h-6m0 0l3-3m-3 3l3 3m-7 7v-6" />
+                            </svg>
+                        </div>
+                        <div class="footer-logo-text">Kartik Plumbing Services</div>
+                    </div>
+                    <p>Your trusted local home service expert providing fast, reliable, and professional solutions for
+                        all your home repair needs.</p>
+                    <div class="footer-contact-item">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                        </svg>
+                        <a href="tel:8356054953" style="color: inherit; text-decoration: none;">83560 54953</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12,6 12,12 16,14" />
+                        </svg>
+                        Open 24 Hours
+                    </div>
                 </div>
-                
-                <div>
-                    <h4 class="font-serif text-xl mb-4">Navigation</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-cream/70 hover:text-gold transition">Home</a></li>
-                        <li><a href="#menu" class="text-cream/70 hover:text-gold transition">Menu</a></li>
-                        <li><a href="#story" class="text-cream/70 hover:text-gold transition">Our Story</a></li>
-                        <li><a href="#visit" class="text-cream/70 hover:text-gold transition">Visit</a></li>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#why-us">Why Choose Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                
-                <div>
-                    <h4 class="font-serif text-xl mb-4">Connect</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-cream/70 hover:text-gold transition text-xl"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-cream/70 hover:text-gold transition text-xl"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-cream/70 hover:text-gold transition text-xl"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-cream/70 hover:text-gold transition text-xl"><i class="fab fa-tiktok"></i></a>
-                    </div>
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Plumbing Services</a></li>
+                        <li><a href="#services">Leak Detection</a></li>
+                        <li><a href="#services">Pipe Repair</a></li>
+                        <li><a href="#services">Electrical Work</a></li>
+                        <li><a href="#services">Painting Work</a></li>
+                    </ul>
                 </div>
-                
-                <div>
-                    <h4 class="font-serif text-xl mb-4">Stay Updated</h4>
-                    <p class="text-cream/70 mb-4">Subscribe for seasonal menus and special events.</p>
-                    <div class="flex">
-                        <input type="email" placeholder="Your email" class="bg-cream/20 text-cream px-4 py-3 rounded-l-lg w-full focus:outline-none">
-                        <button class="bg-gold text-darkbrown px-4 rounded-r-lg font-medium">→</button>
-                    </div>
+                <div class="footer-section">
+                    <h4>Service Areas</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Dombivli West</a></li>
+                        <li><a href="#">Kalyan</a></li>
+                        <li><a href="#">Reti Bunder</a></li>
+                        <li><a href="#">Mothagaon</a></li>
+                        <li><a href="#">Kopar Road</a></li>
+                        <li><a href="#">Dombivli East</a></li>
+                        <li><a href="#">Thakurli</a></li>
+                        <li><a href="#">Nearby Areas</a></li>
+                    </ul>
                 </div>
             </div>
-            
-            <div class="border-t border-cream/20 mt-12 pt-8 text-center text-cream/50">
-                <p>&copy; 2023 Brew Haven. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p>© 2024 Kartik Plumbing Services. All rights reserved. | Dombivli West, Kalyan, Maharashtra</p>
             </div>
         </div>
     </footer>
 
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/918356054953?text=Hi,%20I%20need%20help%20with%20plumbing%20services" class="whatsapp-btn"
+        target="_blank" rel="noopener">
+        <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+    </a>
+
+    <!-- Mobile Sticky CTA -->
+    <div class="mobile-sticky-cta">
+        <a href="tel:8356054953">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path
+                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+            </svg>
+            Call Now - 83560 54953
+        </a>
+    </div>
+
     <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Cart functionality
-        const cartBtn = document.getElementById('cartBtn');
-        const cartPreview = document.getElementById('cartPreview');
-        const closeCart = document.getElementById('closeCart');
-        const cartCount = document.getElementById('cartCount');
-        const cartItems = document.getElementById('cartItems');
-        const cartTotal = document.getElementById('cartTotal');
-        
-        let cart = [];
-        
-        cartBtn.addEventListener('click', () => {
-            cartPreview.classList.add('open');
-        });
-        
-        closeCart.addEventListener('click', () => {
-            cartPreview.classList.remove('open');
-        });
-        
-        // Add to cart buttons
-        const addToCartButtons = document.querySelectorAll('.add-to-cart');
-        
-        addToCartButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const name = button.getAttribute('data-name');
-                const price = parseFloat(button.getAttribute('data-price'));
-                
-                // Add item to cart
-                cart.push({name, price});
-                
-                // Update cart count
-                cartCount.textContent = cart.length;
-                
-                // Update cart preview
-                updateCartPreview();
-                
-                // Button feedback
-                button.textContent = 'Added!';
-                button.style.backgroundColor = '#6F4E37';
-                button.style.color = '#F5F1E8';
-                
-                setTimeout(() => {
-                    button.textContent = 'Add to Cart';
-                    button.style.backgroundColor = '';
-                    button.style.color = '';
-                }, 1500);
-            });
-        });
-        
-        function updateCartPreview() {
-            cartItems.innerHTML = '';
-            
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<p class="text-darkbrown/60 text-center py-8">Your cart is empty</p>';
-                cartTotal.textContent = '$0.00';
-                return;
-            }
-            
-            let total = 0;
-            
-            cart.forEach((item, index) => {
-                total += item.price;
-                
-                const itemElement = document.createElement('div');
-                itemElement.className = 'flex justify-between items-center py-4 border-b border-beige';
-                itemElement.innerHTML = `
-                    <div>
-                        <h4 class="font-medium">${item.name}</h4>
-                        <p class="text-darkbrown/60 text-sm">$${item.price.toFixed(2)}</p>
-                    </div>
-                    <button class="remove-item text-darkbrown/60 hover:text-coffee" data-index="${index}">
-                        <i class="fas fa-times"></i>
-                    </button>
-                `;
-                
-                cartItems.appendChild(itemElement);
-            });
-            
-            // Add remove item functionality
-            document.querySelectorAll('.remove-item').forEach(button => {
-                button.addEventListener('click', function() {
-                    const index = parseInt(this.getAttribute('data-index'));
-                    cart.splice(index, 1);
-                    cartCount.textContent = cart.length;
-                    updateCartPreview();
-                });
-            });
-            
-            cartTotal.textContent = `$${total.toFixed(2)}`;
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
         }
-        
-        // Menu tabs
-        const menuTabs = document.querySelectorAll('.menu-tab');
-        const menuItems = document.querySelectorAll('.menu-item');
-        
-        menuTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Update active tab
-                menuTabs.forEach(t => {
-                    t.classList.remove('active', 'bg-coffee', 'text-cream');
-                    t.classList.add('bg-beige', 'text-darkbrown');
-                });
-                
-                tab.classList.add('active', 'bg-coffee', 'text-cream');
-                tab.classList.remove('bg-beige', 'text-darkbrown');
-                
-                // Filter items
-                const category = tab.getAttribute('data-category');
-                
-                menuItems.forEach(item => {
-                    if (category === 'coffee' || item.getAttribute('data-category') === category) {
-                        item.classList.remove('hidden');
-                    } else {
-                        item.classList.add('hidden');
-                    }
-                });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
-        
-        // Daily counter animation
-        let count = 0;
-        const dailyCount = document.getElementById('dailyCount');
-        const targetCount = 47;
-        
-        const counterInterval = setInterval(() => {
-            if (count < targetCount) {
-                count++;
-                dailyCount.textContent = count;
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
             } else {
-                clearInterval(counterInterval);
+                navbar.style.background = 'var(--white)';
+                navbar.style.boxShadow = 'var(--shadow)';
             }
-        }, 30);
-        
-        // Scroll animations
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        const fadeInOnScroll = () => {
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('visible');
-                }
-            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
-        
-        window.addEventListener('scroll', fadeInOnScroll);
-        window.addEventListener('load', fadeInOnScroll);
-        
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('#mobileMenu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-        
-        // Today's special button
-        document.querySelector('.btn-ripple').addEventListener('click', function(e) {
-            // Create ripple effect
-            const ripple = document.createElement('span');
-            const rect = this.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-            
-            ripple.style.cssText = `
-                position: absolute;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, 0.7);
-                transform: scale(0);
-                animation: ripple-animation 0.6s linear;
-                width: ${size}px;
-                height: ${size}px;
-                top: ${y}px;
-                left: ${x}px;
-            `;
-            
-            this.appendChild(ripple);
-            
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-        });
-        
-        // Add ripple animation to CSS
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple-animation {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
-            }
-        `;
-        document.head.appendChild(style);
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .feature-card, .about-content > div').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
     </script>
 </body>
+
 </html>
